@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from core.views import index
+from core.views import formImc
 from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', index, name='index') ,
+    path('formImc/', formImc, name='formImc'),
     path('', index, name='index')
 ]

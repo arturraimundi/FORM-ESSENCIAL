@@ -5,6 +5,9 @@ from .forms import avaliarImcModelForm
 from django.http import HttpResponse
 
 def index(request):
+    return render(request, 'index.html')
+
+def formImc(request):
     if request.method == 'POST':
         form = avaliarImcModelForm(request.POST, request.FILES)
         if form.is_valid():
@@ -21,6 +24,6 @@ def index(request):
     context = {
         'form': form
     }
-    return render(request, 'index.html', context)
+    return render(request, 'formImc.html', context)
 
 

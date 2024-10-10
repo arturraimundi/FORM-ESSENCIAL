@@ -1,23 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Produto</title>
-    <link rel="stylesheet" href="../static/css/produto.css">
+    <title>Essencialmente</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+   
 </head>
-<body> 
+<body>
+    
+    <div class="header">
+        <header>
+            <div class="headerImg">
+                <img src="../static/images/Avaliação layout/Avaliação 01-Parte01/logo.png" alt="">
+            </div>
+            <div>
+                <ul>
+                    <li><a href="">Avaliações</a></li>
+                    <li><a href="">Relatórios</a></li>
+                    <li><a href="">Normas das avaliações</a></li>
+                    <li><a href="">Sobre</a></li>
+                    <li><span><a href="">Entrar</a></span></li>
+                </ul>
+            </div>
+        </header>
+    </div>
     <main>
-        <h1>Cadastro de Produtos</h1>
-        <form method="post" action="{% url 'index' %}" class="form" autocomplete="off" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table>
-                {{form.as_table}}
-            </table>
-        
-            <button type="submit">Enviar</button>
-            <button type="reset">Limpar</button>
-        </form>
+        <div class="main-left">
+            <h1>O acompanhamento de crianças e adolescentes com foco no seu bem estar!</h1>
+            <a href="">Saiba Mais</a>
+        </div>
+        <div class="main-right">
+            <div class="img"><img src="../static/images/Avaliação layout/Avaliação 01-Parte01/img-main.png" alt=""></div>
+        </div>
     </main>
+
 </body>
 </html>
