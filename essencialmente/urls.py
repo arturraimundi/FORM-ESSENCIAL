@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from core.views import index
+from core.views import consultaCPF
 from core.views import formImc
 from django.urls import path
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('formImc/', formImc, name='formImc'),
-    path('', index, name='index')
+    path('', index, name='index'),
+    path('consultaCPF', consultaCPF, name = 'consultaCPF')
 ]
