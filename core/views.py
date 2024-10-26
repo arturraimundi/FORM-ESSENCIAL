@@ -8,24 +8,30 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'index.html')
 
+from django.http import HttpResponse
+from django.shortcuts import render
+from .forms import avaliarImcModelForm  # Certifique-se de que está importando corretamente
+
 def formImc(request):
-    if request.method == 'POST':
-        form = avaliarImcModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            form = avaliarImcModelForm()
-            #messages.success(request, 'Produto Salvo com sucesso.')
-            return HttpResponse('Dados enviados com sucesso')
-            
+    print(f'Usuário: {request.user}')
+    if str(request.user) != 'AnonymousUser':
+        if request.method == 'POST':
+            form = avaliarImcModelForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                form = avaliarImcModelForm()
+                return HttpResponse('Dados enviados com sucesso')
+            else:
+                return HttpResponse('Os Dados não foram enviados')
         else:
-            #messages.error(request, 'Erro ao salvar o produto')
-            return HttpResponse('Os Dados não foram enviados')
+            form = avaliarImcModelForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'formImc.html', context)
     else:
-        form = avaliarImcModelForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'formImc.html', context)
+        return render(request, 'index.html')
+
 def consultaCPF(request):
     context = {
         'pessoa': avaliarImc.objects.all()
